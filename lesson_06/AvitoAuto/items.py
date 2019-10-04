@@ -16,12 +16,8 @@ def cleaner_url(url):
 
 
 def parse_params(params):
-    result = {}
-    for i in range(0, len(params), 3):
-        key = params[i + 1].strip().strip(':').replace('\xa0', ' ')
-        value = params[i + 2].strip().replace('\xa0', ' ')
-        result[key] = value
-
+    params = [i.strip().strip(':').replace('\xa0', ' ') for i in params]
+    result = dict(zip(params[1::3], params[2::3]))
     return result
 
 
